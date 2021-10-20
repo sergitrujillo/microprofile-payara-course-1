@@ -1,0 +1,38 @@
+POST http://localhost:8080/product
+Content-Type:  application/json
+
+{
+  "name": "n1",
+  "description": "description 1",
+  "quantity": 10
+}
+
+###
+GET http://localhost:8080/product/n1
+
+###
+PUT http://localhost:8080/product/n1
+Content-Type:  application/json
+
+{
+  "name": "n1",
+  "description": "description 1 modified",
+  "quantity": 10
+}
+
+###
+GET http://localhost:8080/product/n1
+
+### View error
+PUT http://localhost:8080/product/n1
+Content-Type:  application/json
+
+{
+  "name": "n1",
+  "description": "description 1 modified",
+  "quantity": -1
+}
+
+
+###
+DELETE http://localhost:8080/product/n1
