@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.Collection;
 import java.util.Objects;
 
-@Path("product")
+@Path("products")
 @RequestScoped
 public class ProductController {
 
