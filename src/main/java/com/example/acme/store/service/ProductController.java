@@ -24,12 +24,12 @@ public class ProductController {
 
     @GET
     @Path("{name}")
-    public Product get(@PathParam("name") String name){
+    public Product retrive(@PathParam("name") String name){
         return repository.get(name).orElseThrow(NotFoundException::new);
     }
 
     @POST
-    public Response post(@Valid Product product){
+    public Response insert(@Valid Product product){
         repository.get(product.getName()).ifPresent( p -> {throw new WebApplicationException(Response.Status.CONFLICT);});
         repository.save(product);
         final URI productUri = UriBuilder.fromResource(ProductController.class).path("{name}").build(product.getName());
@@ -38,7 +38,7 @@ public class ProductController {
 
     @PUT
     @Path("{name}")
-    public Product put(@Valid Product product, @PathParam("name") String name){
+    public Product update(@Valid Product product, @PathParam("name") String name){
         if (!Objects.equals(name, product.getName())){
             throw new WebApplicationException(Response.Status.CONFLICT);
         }
